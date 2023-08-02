@@ -28,13 +28,16 @@ namespace kiko
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 
-		friend class Text;
+		void DrawTexture(class Texture* texture, float x, float y, float angle = 0.0f);
 
+		friend class Text;
+		friend class Texture;
+
+		SDL_Renderer* m_renderer = nullptr;
 	private:
 		int m_width = 0;
 		int m_height = 0;
 
-		SDL_Renderer* m_renderer = nullptr;
 		SDL_Window* m_window = nullptr;
 	};
 

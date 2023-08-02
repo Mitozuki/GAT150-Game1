@@ -4,7 +4,7 @@
 
 namespace kiko
 {
-	Logger g_logger(LogLevel::Info, &std::cout);
+	Logger g_logger(LogLevel::Info, &std::cout, "log.txt");
 
 	bool Logger::Log(LogLevel logLevel, const std::string& filename, int line)
 	{
@@ -13,22 +13,22 @@ namespace kiko
 		switch (logLevel)
 		{
 		case LogLevel::Info:
-			*m_ostream << "INFO: ";
+			*this << "INFO: ";
 			break;
 		case LogLevel::Warning:
-			*m_ostream << "WARNING: ";
+			*this << "WARNING: ";
 			break;
 		case LogLevel::Error:
-			*m_ostream << "ERROR: ";
+			*this << "ERROR: ";
 			break;
 		case LogLevel::Assert:
-			*m_ostream << "ASSERT: ";
+			*this << "ASSERT: ";
 			break;
 		default:
 			break;
 		}
 
-		*m_ostream << getFileName(filename) << "(" << line << ") \n";
+		*this << getFileName(filename) << "(" << line << ") ";
 
 		return true;
 	}

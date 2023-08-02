@@ -31,6 +31,9 @@
     <ClCompile Include="Emitter.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -55,6 +58,9 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Emitter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

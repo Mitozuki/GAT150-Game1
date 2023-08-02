@@ -7,6 +7,7 @@
 #include "Framework/Scene.h"
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
+#include "Renderer/Texture.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -42,7 +43,8 @@ public:
 
 int main(int argc, char* argv[])
 {
-	INFO_LOG;
+
+	INFO_LOG("Hello World");
 
 	std::unique_ptr<int> up = std::make_unique<int>(10);
 
@@ -87,7 +89,10 @@ int main(int argc, char* argv[])
 	float speed = 100;
 	constexpr float turnRate = kiko::DegreesToRad(180);
 
-	
+
+	// create texture
+	shared_ptr<kiko::Texture> texture = make_shared<kiko::Texture>();
+	texture->Create(kiko::g_renderer, "frogMan.png");
 
 	// main game loop
 	kiko::g_audioSystem.PlayOneShot("background", true);
@@ -137,6 +142,8 @@ int main(int argc, char* argv[])
 		}
 
 		kiko::g_particleSystem.Draw(kiko::g_renderer);
+
+		kiko::g_renderer.DrawTexture(texture.get(), 200.0f, 200.0f, 0.0f);
 
 		game->Draw(kiko::g_renderer);
 
