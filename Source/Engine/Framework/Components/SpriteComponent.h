@@ -10,5 +10,8 @@ namespace kiko
 	public:
 		void Update(float df) override;
 		void Draw(class Renderer& renderer) override;
+
+	public:
+		res_t<Texture> m_texture;
 	};
 }

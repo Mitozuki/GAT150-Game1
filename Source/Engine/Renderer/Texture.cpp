@@ -1,5 +1,6 @@
 #include "Texture.h"
 #include "Renderer.h"
+#include "Core/Logger.h"
 #include "SDL2-2.28.0/include/SDL_image.h"
 namespace kiko
 {
@@ -24,7 +25,7 @@ namespace kiko
 		SDL_Surface* surface = IMG_Load(filename.c_str());
 		if (!surface)
 		{
-			// LOG_WARNING
+			WARNING_LOG("Could not create surface: " << filename);
 			return false;
 		}
 		m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);

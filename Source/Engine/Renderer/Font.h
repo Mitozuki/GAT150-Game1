@@ -10,10 +10,10 @@ namespace kiko
 		Font() = default;
 		Font(const std::string& filename, int fontSize);
 		~Font();
+		virtual bool Create(std::string filename, ...) override;
 		bool Load(const std::string& filename, int fontSize);
 
 		friend class Text;
-		virtual bool Create(std::string filename, ...) override;
 
 	private:
 		_TTF_Font* m_ttfFont = nullptr;

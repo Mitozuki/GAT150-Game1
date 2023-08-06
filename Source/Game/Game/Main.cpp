@@ -46,7 +46,6 @@ public:
 
 int main(int argc, char* argv[])
 {
-
 	INFO_LOG("Hello World");
 
 	std::unique_ptr<int> up = std::make_unique<int>(10);
