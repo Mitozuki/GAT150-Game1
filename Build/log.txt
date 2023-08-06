@@ -1,1 +1,1 @@
-INFO: Main.cpp(93) Hello World
+INFO: Main.cpp(50) Hello World

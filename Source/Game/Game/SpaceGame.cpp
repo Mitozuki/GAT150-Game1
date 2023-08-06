@@ -3,6 +3,8 @@
 #include "Enemy.h"
 
 #include "Framework/Scene.h"
+#include "Framework/Resource/ResourceManager.h"
+#include "Framework/Components/SpriteComponent.h"
 
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
@@ -14,7 +16,9 @@
 bool SpaceGame::Initialize()
 {
 	// create font / text objects
-	m_font = std::make_shared<kiko::Font>("Vendetta.ttf", 24);
+	//m_font = std::make_shared<kiko::Font>("Vendetta.ttf", 24);
+	m_font = kiko::g_resources.Get<kiko::Font>("Vendetta.ttf", 24);
+
 	m_scoreText = std::make_unique<kiko::Text>(m_font);
 	m_scoreText->Create(kiko::g_renderer, "SCORE", kiko::Color{ 1, 1, 1, 1 });
 
@@ -56,10 +60,16 @@ void SpaceGame::Update(float dt)
 	case SpaceGame::eState::StartLevel:
 		m_scene->RemoveAll();
 	{
+		// Create Player
 		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, kiko::pi, kiko::Transform{ { 400, 300 }, 0, 3 }, kiko::g_manager.Get("ship.txt"));
 		player->m_tag = "Player";
 		player->m_game = this;
 		player->SetDamping(0.9f);
+		// Create Components
+		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
+		component->m_texture = kiko::g_resources.Get("frogMan.png", kiko::g_renderer);
+		player->AddComponent(std::move(component));
+
 		m_scene->Add(std::move(player));
 	}
 	m_state = eState::Game;
