@@ -67,7 +67,7 @@ void SpaceGame::Update(float dt)
 		player->SetDamping(0.9f);
 		// Create Components
 		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
-		component->m_texture = kiko::g_resources.Get<kiko::Texture>("frogMan.png", kiko::g_renderer);
+		component->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_1_B_Small.png", kiko::g_renderer);
 		player->AddComponent(std::move(component));
 
 		m_scene->Add(std::move(player));
@@ -84,7 +84,7 @@ void SpaceGame::Update(float dt)
 			enemy->m_game = this;
 			//create components
 			std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
-			component->m_texture = kiko::g_resources.Get<kiko::Texture>("frogMan.png", kiko::g_renderer);
+			component->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_2_D_Small.png", kiko::g_renderer);
 			enemy->AddComponent(std::move(component));
 
 

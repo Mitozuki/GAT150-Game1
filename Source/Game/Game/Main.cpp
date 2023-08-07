@@ -93,7 +93,7 @@ int main(int argc, char* argv[])
 
 
 	// create texture
-	kiko::res_t<kiko::Texture> texture = kiko::g_resources.Get<kiko::Texture>("frogMan.png", kiko::g_renderer);
+	kiko::res_t<kiko::Texture> texture = kiko::g_resources.Get<kiko::Texture>("Ship_1_B_Small.png", kiko::g_renderer);
 
 	// main game loop
 	kiko::g_audioSystem.PlayOneShot("background", true);
