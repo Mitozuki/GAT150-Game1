@@ -62,10 +62,11 @@ namespace kiko
 	{
 		vec2 size = texture->GetSize();
 			SDL_Rect dest;
-			dest.x = size.x;
-			dest.y = size.y;
-			dest.w = size.x;
-			dest.h = size.y;
+			dest.x = (int)x - (size.x * 0.5);
+			dest.y = (int)y - (size.y* 0.5);
+			dest.w = (int)size.x;
+			dest.h = (int)size.y;
+
 			// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
 			SDL_RenderCopyEx(m_renderer, texture->m_texture, NULL, NULL, angle, NULL, SDL_RendererFlip::SDL_FLIP_NONE);
 	}

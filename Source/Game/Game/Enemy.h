@@ -11,20 +11,10 @@ public:
 	};
 
 public:
-	Enemy(float speed, float turnRate, const kiko::Transform transform, std::shared_ptr<kiko::Model> model) :
-		Actor{ transform, model },
+	Enemy(float speed, float turnRate, const kiko::Transform& transform) :
+		Actor{ transform },
 		m_speed{ speed },
 		m_turnRate{ turnRate }
-	{
-		m_fireRate = 2.0f;
-		m_fireTimer = m_fireRate;
-	}
-	
-	Enemy(float speed, float turnRate, const kiko::Transform transform, std::shared_ptr<kiko::Model> model, Type type) :
-		Actor{ transform, model },
-		m_speed{ speed },
-		m_turnRate{ turnRate },
-		m_type{ Special }
 	{
 		m_fireRate = 2.0f;
 		m_fireTimer = m_fireRate;

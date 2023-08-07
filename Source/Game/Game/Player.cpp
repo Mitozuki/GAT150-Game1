@@ -2,6 +2,10 @@
 #include "Weapon.h"
 #include "SpaceGame.h"
 #include "Framework/Scene.h"
+#include "Framework/Components/SpriteComponent.h"
+#include "Framework/Resource/ResourceManager.h"
+#include "Framework/Components/PhysicsComponent.h"
+#include "Renderer/Texture.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Emitter.h"
@@ -20,9 +24,11 @@ void Player::Update(float dt)
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) thrust = 1;
 
 	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(m_transform.rotation);
-	AddForce(forward * m_speed * thrust);
 
-	m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
+	auto physicsComponent = GetComponent<kiko::PhysicsComponent>();
+	physicsComponent->ApplyForce(forward * m_speed * thrust);
+
+	//m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
 	m_transform.position.x = kiko::Wrap(m_transform.position.x, (float)kiko::g_renderer.GetWidth());
 	m_transform.position.y = kiko::Wrap(m_transform.position.y, (float)kiko::g_renderer.GetHeight());
 
@@ -30,10 +36,15 @@ void Player::Update(float dt)
 	{
 		kiko::Transform transform{ m_transform.position, m_transform.rotation, m_transform.scale };
 		//  + kiko::DegreesToRad(10.0f)
-		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform, kiko::g_manager.Get("bolt.txt"));
+		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform);
 		weapon->m_tag = "Player";
+		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
+		component->m_texture = kiko::g_resources.Get<kiko::Texture>("rocket.png", kiko::g_renderer);
+		weapon->AddComponent(std::move(component));
+
 		m_scene->Add(std::move(weapon));
 	}
+	/*
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_B) && !kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_B))
 	{
 		kiko::Transform transform{ m_transform.position, m_transform.rotation, m_transform.scale };
@@ -48,7 +59,7 @@ void Player::Update(float dt)
 		m_scene->Add(std::move(weapon1));
 		m_scene->Add(std::move(weapon2));
 	}
-
+	*/
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_T)) kiko::g_time.SetTimeScale(0.5f);
 	else kiko::g_time.SetTimeScale(1.0f);
 }
