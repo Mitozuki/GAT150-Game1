@@ -15,21 +15,21 @@ namespace kiko
 		Vector3(float x, float y, float z) : x{ x }, y{ y }, z{ z } {}
 		Vector3(int x, int y, int z) : x{ (float)x }, y{ (float)y }, z{ (float)z } {}
 
-		Vector3 operator + (const Vector3& v) const { return Vector3(x + v.x, y + v.y); }
-		Vector3 operator - (const Vector3& v) const { return Vector3(x - v.x, y - v.y); }
-		Vector3 operator / (const Vector3& v) const { return Vector3(x / v.x, y / v.y); }
-		Vector3 operator * (const Vector3& v) const { return Vector3(x * v.x, y * v.y); }
+		Vector3 operator + (const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
+		Vector3 operator - (const Vector3& v) const { return Vector3(x - v.x, y - v.y, z - v.z); }
+		Vector3 operator / (const Vector3& v) const { return Vector3(x / v.x, y / v.y, z / v.z); }
+		Vector3 operator * (const Vector3& v) const { return Vector3(x * v.x, y * v.y, z * v.z); }
 
-		Vector3 operator + (float s) const { return Vector3(x + s, y + s); }
-		Vector3 operator - (float s) const { return Vector3(x - s, y - s); }
-		Vector3 operator / (float s) const { return Vector3(x / s, y / s); }
-		Vector3 operator * (float s) const { return Vector3(x * s, y * s); }
+		Vector3 operator + (float s) const { return Vector3(x + s, y + s, z + s); }
+		Vector3 operator - (float s) const { return Vector3(x - s, y - s, z - s); }
+		Vector3 operator / (float s) const { return Vector3(x / s, y / s, z / s); }
+		Vector3 operator * (float s) const { return Vector3(x * s, y * s, z * s); }
 
 
-		Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; return *this; }
-		Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; return *this; }
-		Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; return *this; }
-		Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; return *this; }
+		Vector3& operator += (const Vector3& v) { x += v.x; y += v.y; z += v.z; return *this; }
+		Vector3& operator -= (const Vector3& v) { x -= v.x; y -= v.y; z -= v.z; return *this; }
+		Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
+		Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
 
 		float LengthSqr() const { return (x * x) + (y * y); }
 		float Length() const { return static_cast<float>(std::sqrt(LengthSqr())); }
