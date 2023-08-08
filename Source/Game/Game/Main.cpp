@@ -1,11 +1,10 @@
 #include "Core/Core.h"
 #include "Renderer/Renderer.h"
-#include "Renderer/ModelManager.h"
+#include "Renderer/Model.h"
 #include "Renderer/ParticleSystem.h"
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
-#include "Framework/Scene.h"
-#include "Framework/Resource/ResourceManager.h"
+#include "Framework/Framework.h"
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
 #include "Renderer/Texture.h"
@@ -44,16 +43,15 @@ public:
 	kiko::Vector2 m_vel;
 };
 
+
+
+
 int main(int argc, char* argv[])
 {
-	INFO_LOG("Hello World");
 
-	std::unique_ptr<int> up = std::make_unique<int>(10);
+	INFO_LOG("Initialize Engine");
 
 	kiko::MemoryTracker::Initialize();
-
-	auto m1 = kiko::Max(4.0f, 3.0f);
-	auto m2 = kiko::Max(4, 3);
 
 	//constexpr float a = kiko::DegreesToRad(180);
 

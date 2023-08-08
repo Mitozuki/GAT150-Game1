@@ -2,16 +2,13 @@
 #include "Player.h"
 #include "Enemy.h"
 
-#include "Framework/Scene.h"
-#include "Framework/Resource/ResourceManager.h"
-#include "Framework/Components/SpriteComponent.h"
-#include "Framework/Components/EnginePhysicsComponent.h"
+#include "Framework/Framework.h"
 
 #include "Audio/AudioSystem.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Text.h"
-#include "Renderer/ModelManager.h"
+#include "Renderer/Model.h"
 #include "Renderer/Emitter.h"
 
 bool SpaceGame::Initialize()
@@ -95,7 +92,7 @@ void SpaceGame::Update(float dt)
 			m_scene->Add(std::move(enemy));
 			if (kiko::random(0, 9) == 0)
 			{
-				std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(kiko::randomf(5.0f, 15.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) });
+				std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(kiko::randomf(5.0f, 15.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, 1});
 				enemy2->m_tag = "Enemy";
 				enemy2->m_game = this;
 				m_scene->Add(std::move(enemy2));

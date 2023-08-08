@@ -1,7 +1,9 @@
 #pragma once
 #include "Framework/Resource/Resource.h"
 #include <string>
+
 struct _TTF_Font;
+
 namespace kiko
 {
 	class Font : public Resource

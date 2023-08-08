@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "Renderer/Model.h"
 
 class Weapon : public kiko::Actor
 {

@@ -9,7 +9,7 @@
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Emitter.h"
-#include "Renderer/ModelManager.h"
+#include "Renderer/Model.h"
 
 void Player::Update(float dt)
 {
