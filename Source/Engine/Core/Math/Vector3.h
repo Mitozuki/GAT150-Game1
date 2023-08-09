@@ -15,6 +15,25 @@ namespace kiko
 		Vector3(float x, float y, float z) : x{ x }, y{ y }, z{ z } {}
 		Vector3(int x, int y, int z) : x{ (float)x }, y{ (float)y }, z{ (float)z } {}
 
+		// float operator [] (size_t index) const { return (&x)[index]; }
+		// float& operator [] (size_t index) { return (&x)[index]; } put into the Vector2 once problem solved
+		// Vector2 operator - () const { return Vector2(-x, -y); }
+
+		/*
+		mat2 GetMatrix() const
+		{
+			mat2 ms = mat2:::CreateScale(scale);
+			mat2 mr = mat2:::CreateRotation(rotation);
+			mat2 mx = ms * mr;
+
+			return mx;
+		}
+		*/
+
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+		Vector3 operator - () const { return Vector3(-x, -y, -z); }
+
 		Vector3 operator + (const Vector3& v) const { return Vector3(x + v.x, y + v.y, z + v.z); }
 		Vector3 operator - (const Vector3& v) const { return Vector3(x - v.x, y - v.y, z - v.z); }
 		Vector3 operator / (const Vector3& v) const { return Vector3(x / v.x, y / v.y, z / v.z); }
@@ -31,7 +50,7 @@ namespace kiko
 		Vector3& operator /= (const Vector3& v) { x /= v.x; y /= v.y; z /= v.z; return *this; }
 		Vector3& operator *= (const Vector3& v) { x *= v.x; y *= v.y; z *= v.z; return *this; }
 
-		float LengthSqr() const { return (x * x) + (y * y); }
+		float LengthSqr() const { return (x * x) + (y * y) + (z * z); }
 		float Length() const { return static_cast<float>(std::sqrt(LengthSqr())); }
 
 		float DistanceSqr(const Vector3& v) const { return (v - *this).LengthSqr(); }
@@ -60,6 +79,9 @@ namespace kiko
 
 		std::string ys = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
 		v.y = std::stof(ys);
+
+		std::string yz = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
+		v.z = std::stof(ys);
 
 		return stream;
 	}

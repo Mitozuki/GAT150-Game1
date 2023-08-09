@@ -62,9 +62,10 @@ void SpaceGame::Update(float dt)
 		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, kiko::pi, kiko::Transform{ { 400, 300 }, 0, 3 });
 		player->m_tag = "Player";
 		player->m_game = this;
+
 		// Create Components
-		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
-		component->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_1_B_Small.png", kiko::g_renderer);
+		auto component = std::make_unique<kiko::ModelRenderComponent>();
+		component->m_model = kiko::g_resources.Get<kiko::Model>("ship.txt");
 		player->AddComponent(std::move(component));
 
 		auto physicsComponent = std::make_unique<kiko::EnginePhysicsComponent>();

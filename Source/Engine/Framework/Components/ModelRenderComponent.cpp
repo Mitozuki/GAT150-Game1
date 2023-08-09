@@ -1,4 +1,5 @@
 #include "ModelRenderComponent.h"
+#include "Framework/Actor.h"
 
 namespace kiko
 {
@@ -9,6 +10,6 @@ namespace kiko
 
 	void kiko::ModelRenderComponent::Draw(Renderer& renderer)
 	{
-		// Model->Draw(renderer, m_owner->m_transform);
+		m_model->Draw(renderer, m_owner->m_transform);
 	}
 }
