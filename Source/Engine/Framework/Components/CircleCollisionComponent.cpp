@@ -3,6 +3,8 @@
 
 namespace kiko
 {
+    class Component;
+
     void CircleCollsionComponent::Update(float dt)
     {
     }

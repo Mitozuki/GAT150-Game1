@@ -3,7 +3,7 @@
 
 namespace kiko
 {
-	class CollisionComponent : Component
+	class CollisionComponent : public Component
 	{
 	public:
 		virtual bool CheckCollision(CollisionComponent* collision) = 0;

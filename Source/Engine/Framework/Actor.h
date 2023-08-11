@@ -12,9 +12,6 @@ namespace kiko
 	{
 	public:
 		Actor() = default;
-		Actor(const kiko::Transform transform, std::shared_ptr<Model> model) :
-			m_transform{ transform }
-		{}
 		Actor(const kiko::Transform& transform) :
 			m_transform{ transform }
 		{}
