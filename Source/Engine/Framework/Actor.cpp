@@ -3,6 +3,23 @@
 
 namespace kiko
 {
+	bool Actor::Initialize()
+	{
+		for (auto& component : m_components)
+		{
+			component->Initialize();
+		}
+
+		return true;
+	}
+	void Actor::OnDestroy()
+	{
+		for (auto& component : m_components)
+		{
+			component->OnDestroy();
+		}
+	}
+
 	void Actor::Update(float dt)
 	{
 		if (m_lifespan != -1.0f)

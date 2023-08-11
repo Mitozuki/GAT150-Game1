@@ -1,15 +1,32 @@
 #include "Player.h"
 #include "Weapon.h"
 #include "SpaceGame.h"
-#include "Framework/Scene.h"
-#include "Framework/Components/SpriteComponent.h"
-#include "Framework/Resource/ResourceManager.h"
-#include "Framework/Components/PhysicsComponent.h"
+#include "Framework/Framework.h"
+
 #include "Renderer/Texture.h"
 #include "Input/InputSystem.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Emitter.h"
 #include "Renderer/Model.h"
+
+bool Player::Initialize()
+{
+	Actor::Initialize();
+
+	m_physicsComponent = GetComponent<kiko::PhysicsComponent>();
+	auto collisionComponent = GetComponent<kiko::CollisionComponent>();
+	if (collisionComponent)
+	{
+		auto renderComponent = GetComponent<kiko::RenderComponent>();
+		if (renderComponent)
+		{
+			float scale = m_transform.scale;
+			collisionComponent->m_radius = GetComponent<kiko::RenderComponent>()->GetRadius() * scale;
+		}
+	}
+
+	return true;
+}
 
 void Player::Update(float dt)
 {
@@ -25,8 +42,7 @@ void Player::Update(float dt)
 
 	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(m_transform.rotation);
 
-	auto physicsComponent = GetComponent<kiko::PhysicsComponent>();
-	physicsComponent->ApplyForce(forward * m_speed * thrust);
+	m_physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
 	m_transform.position.x = kiko::Wrap(m_transform.position.x, (float)kiko::g_renderer.GetWidth());
@@ -41,6 +57,10 @@ void Player::Update(float dt)
 		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
 		component->m_texture = kiko::g_resources.Get<kiko::Texture>("rocket.png", kiko::g_renderer);
 		weapon->AddComponent(std::move(component));
+
+		auto collisionComponent = std::make_unique<kiko::CircleCollsionComponent>();
+		collisionComponent->m_radius = 30.0f;
+		weapon->AddComponent(std::move(collisionComponent));
 
 		m_scene->Add(std::move(weapon));
 	}

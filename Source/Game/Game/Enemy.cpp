@@ -4,7 +4,23 @@
 #include "SpaceGame.h"
 #include "Renderer/Renderer.h"
 #include "Renderer/Emitter.h"
-#include "Framework/Scene.h"
+#include "Framework/Framework.h"
+
+bool Enemy::Initialize()
+{
+	auto collisionComponent = GetComponent<kiko::CollisionComponent>();
+	if (collisionComponent)
+	{
+		auto renderComponent = GetComponent<kiko::RenderComponent>();
+		if (renderComponent)
+		{
+			float scale = m_transform.scale;
+			collisionComponent->m_radius = GetComponent<kiko::RenderComponent>()->GetRadius() * scale;
+		}
+	}
+
+	return true;
+}
 
 void Enemy::Update(float dt)
 {
