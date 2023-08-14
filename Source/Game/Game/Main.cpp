@@ -58,6 +58,27 @@ int main(int argc, char* argv[])
 	kiko::seed_random((unsigned int)time(nullptr));
 	kiko::setFilePath("Assets");
 
+	rapidjson::Document document;
+	kiko::Json::Load("json.txt", document);
+	string string;
+	kiko::Json::Read(document, "string", string);
+	std::cout << string << std::endl;
+	bool boolean;
+	kiko::Json::Read(document, "boolean", boolean);
+	std::cout << boolean << std::endl;
+	int i1;
+	kiko::Json::Read(document, "integer1", i1);
+	std::cout << i1 << std::endl;
+	int i2;
+	kiko::Json::Read(document, "integer2", i2);
+	std::cout << i2 << std::endl;
+	float float1;
+	kiko::Json::Read(document, "float", float1);
+	std::cout << float1 << std::endl;
+	kiko::vec2 vector2;
+	kiko::Json::Read(document, "vector2", vector2);
+	std::cout << vector2 << std::endl;
+
 	kiko::g_renderer.Initialize();
 	kiko::g_renderer.CreateWindow("CSC195", 800, 600);
 
