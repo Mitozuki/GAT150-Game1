@@ -19,9 +19,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Resource\ResourceManager.cpp">
-      <Filter>Source\Resource</Filter>
-    </ClCompile>
     <ClCompile Include="Components\SpriteComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
@@ -33,6 +30,9 @@
     </ClCompile>
     <ClCompile Include="Components\CircleCollisionComponent.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +80,12 @@
     </ClInclude>
     <ClInclude Include="Components\CircleCollisionComponent.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,6 +3,8 @@
 
 namespace kiko
 {
+	CLASS_DEFINITION(ModelRenderComponent)
+
 	void kiko::ModelRenderComponent::Update(float df)
 	{
 

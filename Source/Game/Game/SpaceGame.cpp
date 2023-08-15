@@ -15,7 +15,8 @@ bool SpaceGame::Initialize()
 {
 	// create font / text objects
 	//m_font = std::make_shared<kiko::Font>("Vendetta.ttf", 24);
-	m_font = kiko::g_resources.Get<kiko::Font>("Vendetta.ttf", 24);
+	//m_font = kiko::ResourceManager::Instance().Get<kiko::Font>("Vendetta.ttf", 24);
+	m_font = GET_RESOURCE(kiko::Font, "Vendetta.ttf", 24);
 
 	m_scoreText = std::make_unique<kiko::Text>(m_font);
 	m_scoreText->Create(kiko::g_renderer, "SCORE", kiko::Color{ 1, 1, 1, 1 });
@@ -64,15 +65,15 @@ void SpaceGame::Update(float dt)
 		player->m_game = this;
 
 		// Create Components
-		auto component = std::make_unique<kiko::SpriteComponent>();
-		component->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_1_B_Small.png", kiko::g_renderer);
+		auto component = CREATE_CLASS(SpriteComponent)
+		component->m_texture = GET_RESOURCE(kiko::Texture, "Ship_1_B_Small.png", kiko::g_renderer);
 		player->AddComponent(std::move(component));
 
-		auto physicsComponent = std::make_unique<kiko::EnginePhysicsComponent>();
+		auto physicsComponent = CREATE_CLASS(EnginePhysicsComponent)
 		physicsComponent->m_damping = 0.5f;
 		player->AddComponent(std::move(physicsComponent));
 
-		auto collisionComponent = std::make_unique<kiko::CircleCollsionComponent>();
+		auto collisionComponent = CREATE_CLASS(CircleCollsionComponent)
 		collisionComponent->m_radius = 30.0f;
 		player->AddComponent(std::move(collisionComponent));
 
@@ -92,7 +93,7 @@ void SpaceGame::Update(float dt)
 			enemy->m_game = this;
 			//create components
 			std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
-			component->m_texture = kiko::g_resources.Get<kiko::Texture>("Ship_2_D_Small.png", kiko::g_renderer);
+			component->m_texture = GET_RESOURCE(kiko::Texture, "Ship_2_D_Small.png", kiko::g_renderer);
 			enemy->AddComponent(std::move(component));
 
 			auto collisionComponent = std::make_unique<kiko::CircleCollsionComponent>();

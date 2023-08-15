@@ -48,7 +48,6 @@ public:
 
 int main(int argc, char* argv[])
 {
-
 	INFO_LOG("Initialize Engine");
 
 	kiko::MemoryTracker::Initialize();
@@ -58,7 +57,7 @@ int main(int argc, char* argv[])
 	kiko::seed_random((unsigned int)time(nullptr));
 	kiko::setFilePath("Assets");
 
-	rapidjson::Document document;
+	/*rapidjson::Document document;
 	kiko::Json::Load("json.txt", document);
 	string string;
 	kiko::Json::Read(document, "string", string);
@@ -77,7 +76,7 @@ int main(int argc, char* argv[])
 	std::cout << float1 << std::endl;
 	kiko::vec2 vector2;
 	kiko::Json::Read(document, "vector2", vector2);
-	std::cout << vector2 << std::endl;
+	std::cout << vector2 << std::endl;*/
 
 	kiko::g_renderer.Initialize();
 	kiko::g_renderer.CreateWindow("CSC195", 800, 600);
