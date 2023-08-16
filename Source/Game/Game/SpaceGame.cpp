@@ -61,7 +61,7 @@ void SpaceGame::Update(float dt)
 	{
 		// Create Player
 		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, kiko::pi, kiko::Transform{ { 400, 300 }, 0, 0.8f });
-		player->m_tag = "Player";
+		player->tag = "Player";
 		player->m_game = this;
 
 		// Create Components
@@ -89,7 +89,7 @@ void SpaceGame::Update(float dt)
 		{
 			m_spawnTimer = 0;
 			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::twoPi), 0.8f});
-			enemy->m_tag = "Enemy";
+			enemy->tag = "Enemy";
 			enemy->m_game = this;
 			//create components
 			std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
@@ -106,7 +106,7 @@ void SpaceGame::Update(float dt)
 			if (kiko::random(0, 9) == 0)
 			{
 				std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(kiko::randomf(5.0f, 15.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, 0.08f});
-				enemy2->m_tag = "Enemy";
+				enemy2->tag = "Enemy";
 				enemy2->m_game = this;
 
 				auto collisionComponent = std::make_unique<kiko::CircleCollsionComponent>();

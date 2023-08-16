@@ -20,7 +20,7 @@ bool Player::Initialize()
 		auto renderComponent = GetComponent<kiko::RenderComponent>();
 		if (renderComponent)
 		{
-			float scale = m_transform.scale;
+			float scale = transform.scale;
 			collisionComponent->m_radius = GetComponent<kiko::RenderComponent>()->GetRadius() * scale;
 		}
 	}
@@ -35,25 +35,25 @@ void Player::Update(float dt)
 	float rotate = 0;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
-	m_transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
+	transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
 
 	float thrust = 0;
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) thrust = 1;
 
-	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(m_transform.rotation);
+	kiko::vec2 forward = kiko::vec2{ 0, -1 }.Rotate(transform.rotation);
 
 	m_physicsComponent->ApplyForce(forward * m_speed * thrust);
 
 	//m_transform.position += forward * m_speed * thrust * kiko::g_time.GetDeltaTime();
-	m_transform.position.x = kiko::Wrap(m_transform.position.x, (float)kiko::g_renderer.GetWidth());
-	m_transform.position.y = kiko::Wrap(m_transform.position.y, (float)kiko::g_renderer.GetHeight());
+	transform.position.x = kiko::Wrap(transform.position.x, (float)kiko::g_renderer.GetWidth());
+	transform.position.y = kiko::Wrap(transform.position.y, (float)kiko::g_renderer.GetHeight());
 
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 	{
-		kiko::Transform transform{ m_transform.position, m_transform.rotation, m_transform.scale };
+		kiko::Transform transform{ transform.position, transform.rotation, transform.scale };
 		//  + kiko::DegreesToRad(10.0f)
 		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform);
-		weapon->m_tag = "Player";
+		weapon->tag = "Player";
 		std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
 		component->m_texture = GET_RESOURCE(kiko::Texture, "rocket.png", kiko::g_renderer);
 		weapon->AddComponent(std::move(component));
@@ -86,7 +86,7 @@ void Player::Update(float dt)
 
 void Player::OnCollision(Actor* other)
 {
-	if (other->m_tag == "Enemy")
+	if (other->tag == "Enemy")
 	{
 		m_game->SetLives(m_game->GetLives() - 1);
 		dynamic_cast<SpaceGame*>(m_game)->setState(SpaceGame::eState::PlayerDeadStart);

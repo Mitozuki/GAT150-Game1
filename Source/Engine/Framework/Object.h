@@ -5,7 +5,7 @@
 
 #define CLASS_DECLARATION(classname) \
 	virtual const char* GetClassName() { return #classname; } \
-	bool Read(const rapidjson::Value& value); \
+	void Read(const json_t& value); \
 	class Register \
 		{ \
 		public: \
@@ -28,7 +28,7 @@ namespace kiko
 
 		 CLASS_DECLARATION(Object)
 
-		 virtual bool Initialize() { return true; }
+		virtual bool Initialize() { return true; }
 		virtual void OnDestroy() {}
 
 	protected:

@@ -15,7 +15,7 @@ namespace kiko
 
 		Actor() = default;
 		Actor(const kiko::Transform& transform) :
-			m_transform{ transform }
+			transform{ transform }
 		{}
 
 		virtual bool Initialize() override;
@@ -38,19 +38,20 @@ namespace kiko
 		class Scene* m_scene = nullptr;
 		class Game* m_game;
 
-		kiko::Transform m_transform;
-		std::string m_tag;
-		float m_lifespan = -1.0f;
+	public:
+		kiko::Transform transform;
+		std::string tag;
+		float lifespan = -1.0f;
 
 	protected:
-		std::vector<std::unique_ptr<Component>> m_components;
+		std::vector<std::unique_ptr<Component>> components;
 
 		bool m_destroyed = false;
 	};
 	template<typename T>
 	inline T* Actor::GetComponent()
 	{
-		for (auto& component : m_components)
+		for (auto& component : components)
 		{
 			T* result = dynamic_cast<T*>(component.get());
 			if (result) return result;
