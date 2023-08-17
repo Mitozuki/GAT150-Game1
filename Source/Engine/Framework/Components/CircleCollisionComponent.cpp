@@ -20,4 +20,9 @@ namespace kiko
 
         return false;
     }
+
+    void CircleCollsionComponent::Read(const json_t& value)
+    {
+        //
+    }
 }

@@ -46,7 +46,7 @@ namespace kiko
 	protected:
 		std::vector<std::unique_ptr<Component>> components;
 
-		bool m_destroyed = false;
+		bool destroyed = false;
 	};
 	template<typename T>
 	inline T* Actor::GetComponent()

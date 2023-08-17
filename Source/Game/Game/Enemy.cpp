@@ -51,16 +51,17 @@ void Enemy::Update(float dt)
 	m_fireTimer -= dt;
 	if (m_fireTimer <= 0 && shoot && m_type == Base)
 	{
+		/*
 		kiko::Transform transform{ transform.position, transform.rotation, transform.scale };
 		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform);
 		m_scene->Add(std::move(weapon));
 
-		m_fireTimer = m_fireRate;
+		m_fireTimer = m_fireRate;*/
 	}
 
 	if (m_fireTimer <= 0 && shoot && m_type == Special)
 	{
-
+		/*
 		kiko::Transform transform{ transform.position, transform.rotation, transform.scale };
 		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>(400.0f, transform);
 		m_scene->Add(std::move(weapon));
@@ -73,7 +74,7 @@ void Enemy::Update(float dt)
 		std::unique_ptr<Weapon> weapon3 = std::make_unique<Weapon>(400.0f, transform2);
 		m_scene->Add(std::move(weapon3));
 
-		m_fireTimer = m_fireRate;
+		m_fireTimer = m_fireRate; */
 	}
 }
 
@@ -84,7 +85,7 @@ void Enemy::OnCollision(Actor* other)
 	if (other->tag == "Player")
 	{
 		m_game->AddScore(100);
-		m_destroyed = true;
+		destroyed = true;
 
 		kiko::EmitterData data;
 		data.burst = true;

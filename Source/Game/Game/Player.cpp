@@ -50,7 +50,7 @@ void Player::Update(float dt)
 
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_SPACE) && !kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_SPACE))
 	{
-		kiko::Transform transform{ transform.position, transform.rotation, transform.scale };
+		/*kiko::Transform transform{ transform.position, transform.rotation, transform.scale };
 		//  + kiko::DegreesToRad(10.0f)
 		std::unique_ptr<Weapon> weapon = std::make_unique<Weapon>( 400.0f, transform);
 		weapon->tag = "Player";
@@ -62,7 +62,7 @@ void Player::Update(float dt)
 		collisionComponent->m_radius = 30.0f;
 		weapon->AddComponent(std::move(collisionComponent));
 
-		m_scene->Add(std::move(weapon));
+		m_scene->Add(std::move(weapon));*/
 	}
 	/*
 	if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_B) && !kiko::g_inputSystem.GetPreviousKeyDown(SDL_SCANCODE_B))
@@ -90,6 +90,6 @@ void Player::OnCollision(Actor* other)
 	{
 		m_game->SetLives(m_game->GetLives() - 1);
 		dynamic_cast<SpaceGame*>(m_game)->setState(SpaceGame::eState::PlayerDeadStart);
-		m_destroyed = true;
+		destroyed = true;
 	}
 }

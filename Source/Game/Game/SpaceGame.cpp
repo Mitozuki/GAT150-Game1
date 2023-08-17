@@ -31,7 +31,8 @@ bool SpaceGame::Initialize()
 	kiko::g_audioSystem.AddAudio("jump", "Jump.wav");
 
 	m_scene = std::make_unique<kiko::Scene>();
-
+	m_scene->Load("scene.json");
+	m_scene->Initialize();
 	
 
 	return true;
@@ -149,6 +150,7 @@ void SpaceGame::Update(float dt)
 
 void SpaceGame::Draw(kiko::Renderer& renderer)
 {
+	m_scene->Draw(renderer);
 	if (m_state == eState::Title)
 	{
 		m_titleText->Draw(renderer, 400, 300);
@@ -159,5 +161,4 @@ void SpaceGame::Draw(kiko::Renderer& renderer)
 	}
 
 	m_scoreText->Draw(renderer, 100, 100);
-	m_scene->Draw(renderer);
 }
