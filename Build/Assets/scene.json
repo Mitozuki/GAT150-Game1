@@ -1,10 +1,11 @@
 {
-	"actors":[
+	"actors": [
 		{
 			"type": "Actor",
 			"name": "Background",
+			"persistent": true,
 			"transform": {
-				"position": [ 400, 300],
+				"position": [ 400, 300 ],
 				"scale": 2.5,
 				"rotation": 0
 			},
@@ -12,6 +13,28 @@
 				{
 					"type": "SpriteComponent",
 					"textureName": "space_background.jpg"
+				}
+			]
+		},
+		{
+			"type": "Weapon",
+			"name": "Rocket",
+			"prototype": true,
+			"tag":  "Player",
+			"lifespan": 2,
+			"transform": {
+				"position": [ 400, 300 ],
+				"scale": 1,
+				"rotation": 0
+			},
+			"speed": 200,
+			"components": [
+				{
+					"type": "SpriteComponent",
+					"textureName": "rocket.png"
+				},
+				{
+					"type":  "CircleCollisionComponent"
 				}
 			]
 		}

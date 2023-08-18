@@ -99,7 +99,7 @@ void Enemy::OnCollision(Actor* other)
 		data.speedMax = 250;
 		data.damping = 0.5f;
 		data.color = kiko::Color{ 1, 1, 0, 1 };
-		kiko::Transform transform{ transform.position, 0, 1 };
+		kiko::Transform transform{ this->transform.position, 0, 1 };
 		auto emitter = std::make_unique<kiko::Emitter>(transform, data);
 		emitter->lifespan = 1.0f;
 		m_scene->Add(std::move(emitter));

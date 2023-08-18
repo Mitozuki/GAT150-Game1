@@ -73,6 +73,9 @@ int main(int argc, char* argv[])
 	kiko::vec2 v{5, 5};
 	v.Normalize();
 
+	kiko::g_renderer.SetColor(0, 0, 0, 0);
+	kiko::g_renderer.BeginFrame();
+
 	vector<Star> stars;
 	for (int i = 0; i < 1000; i++)
 	{
@@ -121,8 +124,6 @@ int main(int argc, char* argv[])
 
 		//position += direction * speed * kiko::g_time.GetDeltaTime();
 
-		kiko::g_renderer.SetColor(0, 0, 0, 0);
-		kiko::g_renderer.BeginFrame();
 		//draw
 		kiko::Vector2 velocity(1.0f, 0.3f);
 

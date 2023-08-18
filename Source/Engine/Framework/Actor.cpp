@@ -5,6 +5,22 @@ namespace kiko
 {
 	CLASS_DEFINITION(Actor)
 
+	Actor::Actor(const Actor& other)
+	{
+		name = other.name;
+		tag = other.tag;
+		lifespan = other.lifespan;
+		transform = other.transform;
+		m_scene = other.m_scene;
+		m_game = other.m_game;
+
+		for (auto& component : components)
+		{
+			auto cloneComponent = std::unique_ptr<Component>((Component*)component->Clone().release());
+			AddComponent(std::move(cloneComponent));
+		}
+	}
+
 	bool Actor::Initialize()
 	{
 		for (auto& component : components)
@@ -56,6 +72,8 @@ namespace kiko
 
 		READ_DATA(value, tag);
 		READ_DATA(value, lifespan);
+		READ_DATA(value, persistent);
+		READ_DATA(value, prototype);
 
 		if (HAS_DATA(value, transform)) transform.Read(GET_DATA(value, transform));
 

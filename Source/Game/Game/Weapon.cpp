@@ -4,8 +4,12 @@
 
 namespace kiko
 {
+	CLASS_DEFINITION(Weapon)
+
 	bool Weapon::Initialize()
 	{
+		Actor::Initialize();
+
 		auto collisionComponent = GetComponent<kiko::CollisionComponent>();
 		if (collisionComponent)
 		{
@@ -39,6 +43,8 @@ namespace kiko
 	}
 	void Weapon::Read(const json_t& value)
 	{
+		Actor::Read(value);
+
 		READ_DATA(value, speed);
 	}
 }
