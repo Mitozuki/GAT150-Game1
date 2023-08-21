@@ -4,4 +4,4 @@ INFO: Factory.h(72) Class Registered: ModelRenderComponent
 INFO: Factory.h(72) Class Registered: EnginePhysicsComponent
 INFO: Factory.h(72) Class Registered: CircleCollsionComponent
 INFO: Factory.h(72) Class Registered: Actor
-INFO: Main.cpp(51) Initialize Engine
+INFO: Main.cpp(52) Initialize Engine

@@ -6,7 +6,7 @@ namespace kiko
 {
 	CLASS_DEFINITION(ModelRenderComponent)
 
-		bool ModelRenderComponent::Initialize()
+	bool ModelRenderComponent::Initialize()
 	{
 		if (!modelName.empty()) m_model = GET_RESOURCE(Model, modelName);
 

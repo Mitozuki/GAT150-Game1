@@ -8,6 +8,7 @@
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
 #include "Renderer/Texture.h"
+#include "Physics/PhysicsSystem.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -62,6 +63,7 @@ int main(int argc, char* argv[])
 
 	kiko::g_audioSystem.Initialize();
 	kiko::g_inputSystem.Initialize();
+	kiko::PhysicsSystem::Instance().Initialize();
 
 
 	kiko::g_audioSystem.AddAudio("mixkit-arcade-retro-background-219.wav", "background");
