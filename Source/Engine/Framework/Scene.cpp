@@ -95,8 +95,6 @@ namespace kiko
 				{
 					Add(std::move(actor));
 				}
-
-				Add(std::move(actor));
 			}
 		}
 	}

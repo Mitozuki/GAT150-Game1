@@ -27,6 +27,7 @@ bool SpaceGame::Initialize()
 	m_gameoverText = std::make_unique<kiko::Text>(m_font);
 	m_gameoverText->Create(kiko::g_renderer, "Game Over", kiko::Color{ 1, 1, 1, 1});
 
+
 	// load audio
 	kiko::g_audioSystem.AddAudio("jump", "Jump.wav");
 
@@ -154,7 +155,8 @@ void SpaceGame::Draw(kiko::Renderer& renderer)
 	m_scene->Draw(renderer);
 	if (m_state == eState::Title)
 	{
-		m_titleText->Draw(renderer, 400, 300);
+		//m_titleText->Draw(renderer, 400, 300);
+		m_scene->GetActorByName("Title")->active = true;
 	}
 	if (m_state == eState::GameOver)
 	{
