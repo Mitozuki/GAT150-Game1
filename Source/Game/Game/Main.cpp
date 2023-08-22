@@ -9,9 +9,9 @@
 #include "Renderer/Font.h"
 #include "Renderer/Texture.h"
 #include "Physics/PhysicsSystem.h"
+
 #include "Player.h"
 #include "Enemy.h"
-
 #include "SpaceGame.h"
 
 #include <iostream>
@@ -19,6 +19,7 @@
 #include <thread>
 #include <array>
 #include <map>
+#include <functional>
 
 using namespace std;
 
@@ -45,10 +46,55 @@ public:
 };
 
 
+void print(int i)
+{
+	cout << i << endl;
+}
+int add(int i1, int i2)
+{
+	return i1 + i2;
+}
+int sub(int i1, int i2)
+{
+	return i1 - i2;
+}
 
+class A
+{
+public:
+	int add(int i1, int i2)
+	{
+		return i1 + i2;
+	}
+};
 
+union Data
+{
+	int i;
+	bool b;
+	char c[6];
+};
 int main(int argc, char* argv[])
 {
+	Data data;
+	data.i = 0;
+	cout << data.i << endl;
+
+	void (*func_ptr)(int) = &print;
+	func_ptr(5);
+
+	int (*op_ptr)(int, int);
+	op_ptr = sub;
+	cout << op_ptr(5, 3) << endl;
+
+	std::function<int(int, int)> op;
+	op = add;
+	cout << op(6, 7) << endl;
+
+	A a;
+	op = std::bind(&A::add, &a, std::placeholders::_1, std::placeholders::_2);
+	cout << op(6, 7) << endl;
+
 	INFO_LOG("Initialize Engine");
 
 	kiko::MemoryTracker::Initialize();

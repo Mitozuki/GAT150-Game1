@@ -11,6 +11,9 @@
     <Filter Include="Source\Components">
       <UniqueIdentifier>{44811cf3-d225-4c42-8f59-d2d0f0c81aed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Event">
+      <UniqueIdentifier>{28079c5a-c14b-40d8-9774-92f7bb3d2e79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp">
@@ -36,6 +39,9 @@
     </ClCompile>
     <ClCompile Include="Components\TextRenderComponent.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Event\EventManager.cpp">
+      <Filter>Source\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="Components\TextRenderComponent.h">
       <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\Event.h">
+      <Filter>Source\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event\EventManager.h">
+      <Filter>Source\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

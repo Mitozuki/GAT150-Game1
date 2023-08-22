@@ -84,7 +84,8 @@ void Enemy::OnCollision(Actor* other)
 
 	if (other->tag == "Player")
 	{
-		m_game->AddScore(100);
+		kiko::EventManager::Instance().DispatchEvent("AddPoints", 100);
+		//m_game->AddScore(100);
 		destroyed = true;
 
 		kiko::EmitterData data;
@@ -98,7 +99,9 @@ void Enemy::OnCollision(Actor* other)
 		data.speedMin = 50;
 		data.speedMax = 250;
 		data.damping = 0.5f;
+
 		data.color = kiko::Color{ 1, 1, 0, 1 };
+
 		kiko::Transform transform{ this->transform.position, 0, 1 };
 		auto emitter = std::make_unique<kiko::Emitter>(transform, data);
 		emitter->lifespan = 1.0f;
