@@ -20,7 +20,6 @@ namespace kiko
 				collisionComponent->m_radius = GetComponent<kiko::RenderComponent>()->GetRadius() * scale;
 			}
 		}
-
 		return true;
 	}
 

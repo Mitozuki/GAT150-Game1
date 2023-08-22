@@ -3,15 +3,15 @@
 
 namespace kiko
 {
-    CLASS_DEFINITION(CircleCollsionComponent)
+    CLASS_DEFINITION(CircleCollisionComponent)
 
     //class Component;
 
-    void CircleCollsionComponent::Update(float dt)
+    void CircleCollisionComponent::Update(float dt)
     {
     }
 
-    bool CircleCollsionComponent::CheckCollision(CollisionComponent* collision)
+    bool CircleCollisionComponent::CheckCollision(CollisionComponent* collision)
     {
         float distance = m_owner->transform.position.Distance(collision->m_owner->transform.position);
         float radius = m_radius + collision->m_radius;
@@ -21,7 +21,7 @@ namespace kiko
         return false;
     }
 
-    void CircleCollsionComponent::Read(const json_t& value)
+    void CircleCollisionComponent::Read(const json_t& value)
     {
         //
     }

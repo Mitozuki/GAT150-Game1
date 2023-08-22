@@ -128,6 +128,8 @@ int main(int argc, char* argv[])
 
 		//draw
 		kiko::Vector2 velocity(1.0f, 0.3f);
+		kiko::g_renderer.SetColor(0, 0, 0, 255);
+		kiko::g_renderer.BeginFrame(); // confirm with Maple this is how we do it
 
 		for (auto& star : stars)
 		{
