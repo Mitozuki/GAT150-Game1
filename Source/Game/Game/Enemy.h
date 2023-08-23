@@ -1,14 +1,10 @@
 #pragma once
 #include "Framework/Actor.h"
+#include "Framework/Components/PhysicsComponent.h"
 
 class Enemy : public kiko::Actor
 {
 public:
-	enum Type
-	{
-		Base,
-		Special
-	};
 
 public:
 	Enemy(float speed, float turnRate, const kiko::Transform& transform) :
@@ -32,5 +28,5 @@ private:
 	float m_fireRate = 0;
 	float m_fireTimer = 0;
 
-	Type m_type = Base;
+	kiko::PhysicsComponent* m_physicsComponent = nullptr;
 };

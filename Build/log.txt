@@ -4,8 +4,10 @@ INFO: Factory.h(72) Class Registered: SpriteComponent
 INFO: Factory.h(72) Class Registered: ModelRenderComponent
 INFO: Factory.h(72) Class Registered: EnginePhysicsComponent
 INFO: Factory.h(72) Class Registered: CircleCollisionComponent
+INFO: Factory.h(72) Class Registered: Box2DPhysicsComponent
+INFO: Factory.h(72) Class Registered: Box2DCollisionComponent
 INFO: Factory.h(72) Class Registered: Actor
-INFO: Main.cpp(98) Initialize Engine
+INFO: Main.cpp(51) Initialize Engine
 INFO: Factory.h(79) Prototype Class Registered: Rocket
 INFO: EventManager.cpp(16) Event Subscribed AddPoints
 INFO: EventManager.cpp(16) Event Subscribed OnPlayerDead

@@ -9,6 +9,7 @@ namespace kiko
 	public:
 		virtual void Update(float dt) override = 0;
 		virtual void ApplyForce(const vec2& force) = 0;
+		virtual void ApplyTorque(float torque) = 0;
 
 	public:
 		vec2 m_velocity;
