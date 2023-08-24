@@ -8,6 +8,4 @@ INFO: Factory.h(72) Class Registered: Box2DPhysicsComponent
 INFO: Factory.h(72) Class Registered: Box2DCollisionComponent
 INFO: Factory.h(72) Class Registered: Actor
 INFO: Main.cpp(51) Initialize Engine
-INFO: Factory.h(79) Prototype Class Registered: Rocket
-INFO: EventManager.cpp(16) Event Subscribed AddPoints
-INFO: EventManager.cpp(16) Event Subscribed OnPlayerDead
+ERROR: Factory.h(89) Class not found in FactoryPlayer

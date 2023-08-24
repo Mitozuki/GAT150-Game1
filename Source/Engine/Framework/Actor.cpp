@@ -84,7 +84,7 @@ namespace kiko
 				std::string type;
 				READ_DATA(componentValue, type);
 
-				auto component = CREATE_CLASS_BASE(Component, type) // returns null (need to fix)
+				auto component = CREATE_CLASS_BASE(Component, type)
 				component->Read(componentValue);
 				AddComponent(std::move(component));
 			}

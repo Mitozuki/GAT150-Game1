@@ -14,8 +14,8 @@
 bool SpaceGame::Initialize()
 {
 	// create font / text objects
-	//m_font = std::make_shared<kiko::Font>("Vendetta.ttf", 24);
-	//m_font = kiko::ResourceManager::Instance().Get<kiko::Font>("Vendetta.ttf", 24);
+	m_font = std::make_shared<kiko::Font>("Vendetta.ttf", 24);
+	m_font = kiko::ResourceManager::Instance().Get<kiko::Font>("Vendetta.ttf", 24);
 	m_font = GET_RESOURCE(kiko::Font, "Vendetta.ttf", 24);
 
 	m_scoreText = std::make_unique<kiko::Text>(m_font);
@@ -68,9 +68,13 @@ void SpaceGame::Update(float dt)
 		m_scene->RemoveAll();
 	{
 		// Create Player
-		std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, kiko::pi, kiko::Transform{ { 400, 300 }, 0, 0.8f });
-		player->tag = "Player";
-		player->m_game = this;
+		//std::unique_ptr<Player> player = std::make_unique<Player>(10.0f, kiko::pi, kiko::Transform{ { 400, 300 }, 0, 0.8f });
+		//player->tag = "Player";
+		//player->m_game = this;
+		auto player = INSTANTIATE(Player, "Player");
+		player->transform = kiko::Transform{ { 400, 300 }, 0, 1 };
+		player->Initialize();
+		m_scene->Add(std::move(player));
 
 		// Create Components
 		auto component = CREATE_CLASS(SpriteComponent)
@@ -96,15 +100,20 @@ void SpaceGame::Update(float dt)
 		if (m_spawnTimer >= m_spawnTime)
 		{
 			m_spawnTimer = 0;
-			std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::twoPi), 0.8f});
-			enemy->tag = "Enemy";
-			enemy->m_game = this;
+			//std::unique_ptr<Enemy> enemy = std::make_unique<Enemy>(kiko::randomf(75.0f, 150.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::twoPi), 0.8f});
+			//enemy->tag = "Enemy";
+			//enemy->m_game = this;
+			auto enemy = INSTANTIATE(Enemy, "Enemy");
+			enemy->transform = kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::twoPi), 1 };
+			enemy->Initialize();
+			m_scene->Add(std::move(enemy));
 			//create components
 			std::unique_ptr<kiko::SpriteComponent> component = std::make_unique<kiko::SpriteComponent>();
 			component->m_texture = GET_RESOURCE(kiko::Texture, "Ship_2_D_Small.png", kiko::g_renderer);
 			enemy->AddComponent(std::move(component));
 
-			auto collisionComponent = std::make_unique<kiko::CircleCollisionComponent>();
+			//auto collisionComponent = std::make_unique<kiko::CircleCollisionComponent>();
+			auto collisionComponent = INSTANTIATE(CircleCollisionComponent, "CircleCollisionComponent");
 			collisionComponent->m_radius = 30.0f;
 			enemy->AddComponent(std::move(collisionComponent));
 
@@ -113,15 +122,14 @@ void SpaceGame::Update(float dt)
 			m_scene->Add(std::move(enemy));
 			if (kiko::random(0, 9) == 0)
 			{
-				std::unique_ptr<Enemy> enemy2 = std::make_unique<Enemy>(kiko::randomf(5.0f, 15.0f), kiko::pi, kiko::Transform{ { kiko::random(800), kiko::random(600) }, 0.08f});
-				enemy2->tag = "Enemy";
-				enemy2->m_game = this;
+				auto enemy2 = INSTANTIATE(Enemy, "Enemy");
+				enemy2->transform = kiko::Transform{ { kiko::random(800), kiko::random(600) }, kiko::randomf(kiko::twoPi), 1 };
+				enemy2->Initialize();
+				m_scene->Add(std::move(enemy));
 
 				auto collisionComponent = std::make_unique<kiko::CircleCollisionComponent>();
 				collisionComponent->m_radius = 30.0f;
-				enemy->AddComponent(std::move(collisionComponent));
-
-				enemy->Initialize();
+				enemy2->AddComponent(std::move(collisionComponent));
 				m_scene->Add(std::move(enemy2));
 			}
 		}
