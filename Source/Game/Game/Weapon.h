@@ -16,5 +16,6 @@ namespace kiko
 
 	private:
 		float speed = 0;
+		PhysicsComponent* m_physicsComponent = nullptr;
 	};
 }

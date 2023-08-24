@@ -18,7 +18,7 @@ namespace kiko
 		bool Initialize() override;
 
 		void Update(float dt) override;
-		void OnCollision(Actor* other) override;
+		void OnCollision(Actor* other) ;
 
 	private:
 		float m_speed = 0;

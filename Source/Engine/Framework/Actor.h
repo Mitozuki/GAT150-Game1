@@ -33,8 +33,9 @@ namespace kiko
 		T* GetComponent();
 
 		//float GetRadius() { return (m_model) ? m_model->GetRadius() * m_transform.scale : 0; }
-		float GetRadius() { return (50.0f); } //? m_model->GetRadius() * m_transform.scale : -10000; }
-		virtual void OnCollision(Actor* other) {}
+		//float GetRadius() { return (50.0f); } //? m_model->GetRadius() * m_transform.scale : -10000; }
+		virtual void OnCollisionEnter(Actor* other) {}
+		virtual void OnCollisionExit(Actor* other) {}
 
 		friend class Scene;
 		class Scene* m_scene = nullptr;
