@@ -73,8 +73,8 @@ void SpaceGame::Update(float dt)
 		//player->m_game = this;
 		auto player = INSTANTIATE(Player, "Player");
 		player->transform = kiko::Transform{ { 400, 300 }, 0, 1 };
-		player->Initialize();
-		m_scene->Add(std::move(player));
+		//player->Initialize();
+		//m_scene->Add(std::move(player));
 
 		// Create Components
 		auto component = CREATE_CLASS(SpriteComponent)

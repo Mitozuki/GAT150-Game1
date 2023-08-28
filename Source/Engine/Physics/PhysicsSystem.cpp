@@ -14,7 +14,7 @@ namespace kiko
 	}
 	void PhysicsSystem::Update(float dt)
 	{
-		//
+		m_world->Step(1.0f / 60.0f, 8, 3);
 	}
 	b2Body* PhysicsSystem::CreateBody(const vec2& position, float angle, const RigidBodyData& data)
 	{

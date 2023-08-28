@@ -39,8 +39,8 @@ namespace kiko
 		float rotate = 0;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
-		transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
-		//m_physicsComponent->ApplyTorque(rotate * m_turnRate);
+		//transform.rotation += rotate * m_turnRate * kiko::g_time.GetDeltaTime();
+		m_physicsComponent->ApplyTorque(rotate * m_turnRate);
 
 		float thrust = 0;
 		if (kiko::g_inputSystem.GetKeyDown(SDL_SCANCODE_W)) thrust = 1;
