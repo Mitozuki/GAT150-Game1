@@ -102,4 +102,23 @@ namespace kiko
 		// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
 		SDL_RenderCopyEx(m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, RadiansToDeg(mx.GetRotation()), nullptr, SDL_RendererFlip::SDL_FLIP_NONE);
 	}
+	void Renderer::DrawTexture(Texture* texture, const Rect& source, const Transform& transform, const vec2& origin, bool fliph)
+	{
+		mat3 mx = transform.GetMatrix();
+
+		vec2 position = mx.GetTranslate();
+		vec2 size = vec2{ source.w, source.h } *mx.GetScale();
+
+		SDL_Rect dest;
+		dest.x = (int)(position.x - (size.x * origin.x));
+		dest.y = (int)(position.y - (size.y * origin.y));
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+
+		SDL_Point center{ (int)(size.x * origin.x), (int)(size.y * origin.y) };
+
+		// https://wiki.libsdl.org/SDL2/SDL_RenderCopyEx
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, (SDL_Rect*)(&source), &dest, RadiansToDeg(mx.GetRotation()), &center, (fliph) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+
+	}
 }

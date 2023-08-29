@@ -11,12 +11,14 @@
 
 bool Platformer::Initialize()
 {
+	INFO_LOG("Initialzing Platformer...")
 	// load audio
 	kiko::g_audioSystem.AddAudio("jump", "Jump.wav");
 
 	m_scene = std::make_unique<kiko::Scene>();
 	m_scene->Load("scenes/scene.json");
 	m_scene->Initialize();
+	m_scene->Load("scenes/tilemap.json");
 
 	// add events
 	EVENT_SUBSCRIBE("AddPoints", Platformer::AddPoints);
@@ -27,6 +29,7 @@ bool Platformer::Initialize()
 
 void Platformer::Shutdown()
 {
+	INFO_LOG("Shutdown Platformer...")
 }
 
 void Platformer::Update(float dt)

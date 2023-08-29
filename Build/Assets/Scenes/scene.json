@@ -66,7 +66,7 @@
 			"components": [
 				{
 					"type": "SpriteAnimRenderComponent",
-					"name": "idle",
+					"defaultSequence": "idle",
 					"sequences": [
 						{
 							"name": "idle",
@@ -90,11 +90,11 @@
 				},
 				{
 					"type": "Box2DPhysicsComponent",
-					"constrainAngle": true
+					"constrainAngle": true,
+					"gravityScale": 2
 				},
 				{
-					"type": "Box2DCollisionComponent",
-					"restitution": 0.1
+					"type": "Box2DCollisionComponent"
 				}
 			]
 		},
@@ -103,17 +103,17 @@
 			"name": "Enemy",
 			"tag": "Enemy",
 			"persistent": true,
-			"m_speed": 10,
+			"m_speed": 1,
 			"m_jump": 5,
 			"transform": {
-				"position": [ 500, 300 ],
+				"position": [ 600, 600 ],
 				"scale": 1,
 				"rotation": 0
 			},
 			"components": [
 				{
 					"type": "SpriteAnimRenderComponent",
-					"name": "idle",
+					"defaultSequence": "idle",
 					"sequences": [
 						{
 							"name": "idle",
@@ -121,7 +121,7 @@
 							"numColumns": 4,
 							"numRows": 1,
 							"startFrame": 1,
-							"endFrame": 8,
+							"endFrame": 4,
 							"textureName": "textures/bat.png"
 						}
 					]
@@ -133,7 +133,9 @@
 				},
 				{
 					"type": "Box2DCollisionComponent",
-					"restitution": 0.1
+					"restitution": 0.1,
+					"isTrigger": true,
+					"damping": 0.9
 				}
 			]
 		},
@@ -185,10 +187,7 @@
 			"type": "Actor",
 			"tag": "Ground",
 			"transform": {
-				"position": [
-					400,
-					520
-				]
+				"position": [ 400, 520 ]
 			},
 			"components": [
 				{
@@ -201,6 +200,5 @@
 				}
 			]
 		}
-
 	]
 }
