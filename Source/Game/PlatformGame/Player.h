@@ -15,6 +15,7 @@ namespace kiko
 		void OnCollisionExit(Actor* other);
 
 	private:
+		float maxSpeed = 0;
 		float m_speed = 0;
 		float m_jump = 0;
 		int groundCount = 0;

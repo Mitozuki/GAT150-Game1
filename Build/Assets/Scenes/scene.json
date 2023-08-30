@@ -56,8 +56,11 @@
 			"name": "Player",
 			"tag": "Player",
 			"persistent": true,
+			"source": [ 0, 0, 16, 35 ],
+			"origin": [ 0.5, 1 ],
 			"m_speed": 10,
-			"m_jump": 5,
+			"maxSpeed": 20,
+			"m_jump": 5, 
 			"transform": {
 				"position": [ 440, 300 ],
 				"scale": 1,
@@ -144,9 +147,9 @@
 			"name": "Crate",
 			"tag": "Ground",
 			"persistent": true,
-			"prototype": true,
+			"m_prototype": true,
 			"transform": {
-				"position": [ 300, 300 ],
+				"position": [ 100, 300 ],
 				"scale": 1,
 				"rotation": 0
 			},
@@ -196,7 +199,7 @@
 				},
 				{
 					"type": "Box2DCollisionComponent",
-					"size": [ 600, 20 ]
+					"size": [ 700, 20 ]
 				}
 			]
 		}

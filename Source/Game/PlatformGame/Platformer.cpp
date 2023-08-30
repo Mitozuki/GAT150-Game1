@@ -17,8 +17,8 @@ bool Platformer::Initialize()
 
 	m_scene = std::make_unique<kiko::Scene>();
 	m_scene->Load("scenes/scene.json");
-	m_scene->Initialize();
 	m_scene->Load("scenes/tilemap.json");
+	m_scene->Initialize();
 
 	// add events
 	EVENT_SUBSCRIBE("AddPoints", Platformer::AddPoints);
@@ -94,7 +94,6 @@ void Platformer::Draw(kiko::Renderer& renderer)
 void Platformer::AddPoints(const kiko::Event& event)
 {
 	m_score += std::get<int>(event.data);
-
 }
 
 void Platformer::OnPlayerDead(const kiko::Event event)

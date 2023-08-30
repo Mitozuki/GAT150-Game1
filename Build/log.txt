@@ -12,8 +12,38 @@ INFO: Factory.h(72) Class Registered: Box2DCollisionComponent
 INFO: Factory.h(72) Class Registered: Actor
 INFO: main.cpp(28) Initialize Engine
 INFO: Platformer.cpp(14) Initialzing Platformer...
-INFO: Factory.h(79) Prototype Class Registered: Crate
-INFO: Factory.h(79) Prototype Class Registered: tile01
-INFO: Factory.h(79) Prototype Class Registered: tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile02
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
+ERROR: Factory.h(89) Class not found in Factory:tile01
 INFO: EventManager.cpp(16) Event Subscribed AddPoints
 INFO: EventManager.cpp(16) Event Subscribed OnPlayerDead

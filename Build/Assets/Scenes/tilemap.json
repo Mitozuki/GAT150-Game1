@@ -4,7 +4,7 @@
 			"type":"Actor",
 			"name":"tile01",
 			"tag":"Ground",
-			"prototype":true,
+			"m_prototype":true,
 			"transform":{
 				"scale": 2
 			},
@@ -33,7 +33,7 @@
 			"type":"Actor",
 			"name":"tile02",
 			"tag":"Ground",
-			"prototype":true,
+			"m_prototype":true,
 			"transform":{
 				"scale": 2
 			},
