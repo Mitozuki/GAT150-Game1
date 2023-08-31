@@ -87,7 +87,7 @@ namespace kiko
 
 				auto actor = CREATE_CLASS_BASE(Actor, type)
 				actor->Read(actorValue);
-				
+
 				if (actor->prototype)
 				{
 					std::string name = actor->name;

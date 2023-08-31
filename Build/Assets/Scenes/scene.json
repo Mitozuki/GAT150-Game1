@@ -147,7 +147,7 @@
 			"name": "Crate",
 			"tag": "Ground",
 			"persistent": true,
-			"m_prototype": true,
+			"prototype": true,
 			"transform": {
 				"position": [ 100, 300 ],
 				"scale": 1,

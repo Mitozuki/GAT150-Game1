@@ -44,6 +44,8 @@ void Platformer::Update(float dt)
 		actor->Initialize();
 		m_scene->Add(std::move(actor));
 		*/
+		
+		
 	}
 
 		break;

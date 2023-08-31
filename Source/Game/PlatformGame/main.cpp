@@ -61,9 +61,6 @@ int main(int argc, char* argv[])
 
 		//update
 		game->Update(kiko::g_time.GetDeltaTime());
-		//draw
-		
-		game->Update(kiko::g_time.GetDeltaTime());
 
 		//draw
 		kiko::g_renderer.SetColor(0, 0, 0, 255);
