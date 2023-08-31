@@ -58,15 +58,20 @@ namespace kiko
 		int column = (frame - 1) % m_sequence->numColumns;
 		int row = (frame - 1) / m_sequence->numColumns;
 
-		source.x = (int)(column * cellSize.x);
-		source.y = (int)(row * cellSize.y);
-		source.w = (int)(cellSize.x);
-		source.h = (int)(cellSize.y);
+		source.x = (int)(column * cellSize.x + paddingLeft);
+		source.y = (int)(row * cellSize.y + paddingTop);
+		source.w = (int)(cellSize.x - paddingLeft - paddingRight);
+		source.h = (int)(cellSize.y - paddingTop - paddingBottom);
 	}
 
 	void SpriteAnimRenderComponent::Read(const json_t& value)
 	{
 		SpriteComponent::Read(value);
+
+		READ_DATA(value, paddingTop);
+		READ_DATA(value, paddingBottom);
+		READ_DATA(value, paddingLeft);
+		READ_DATA(value, paddingRight);
 
 		// read in animation sequences
 		if (HAS_DATA(value, sequences) && GET_DATA(value, sequences).IsArray())

@@ -14,7 +14,7 @@ namespace kiko
 		m_scene = other.m_scene;
 		m_game = other.m_game;
 
-		for (auto& component : components)
+		for (auto& component : other.components)
 		{
 			auto cloneComponent = std::unique_ptr<Component>((Component*)component->Clone().release());
 			AddComponent(std::move(cloneComponent));

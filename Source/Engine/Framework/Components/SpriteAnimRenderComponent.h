@@ -38,6 +38,11 @@ namespace kiko
 		int frame = 0;
 		float frameTimer = 0;
 
+		float paddingTop = 0;
+		float paddingBottom = 0;
+		float paddingLeft = 0;
+		float paddingRight = 0;
+
 	private:
 		std::string defaultSequenceName;
 		std::map<std::string, AnimSequence> m_sequences;

@@ -35,7 +35,7 @@ namespace kiko
 	{
 	public:
 		PrototypeCreator(std::unique_ptr<T> prototype) : m_prototype{ std::move(prototype) } {}
-		std::unique_ptr< class Object> Create() override
+		std::unique_ptr<class Object> Create() override
 		{
 			return m_prototype->Clone();
 		}

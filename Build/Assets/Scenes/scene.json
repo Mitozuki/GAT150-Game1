@@ -58,9 +58,9 @@
 			"persistent": true,
 			"source": [ 0, 0, 16, 35 ],
 			"origin": [ 0.5, 1 ],
-			"m_speed": 10,
-			"maxSpeed": 20,
-			"m_jump": 5, 
+			"m_speed": 90,
+			"maxSpeed": 120,
+			"m_jump": 10, 
 			"transform": {
 				"position": [ 440, 300 ],
 				"scale": 1,
@@ -70,6 +70,10 @@
 				{
 					"type": "SpriteAnimRenderComponent",
 					"defaultSequence": "idle",
+					"paddingTop": 40,
+					"paddingLeft": 45,
+					"paddingRight": 45,
+					"paddingBottom": 0,
 					"sequences": [
 						{
 							"name": "idle",
@@ -202,6 +206,10 @@
 					"size": [ 700, 20 ]
 				}
 			]
+		},
+		{
+			"type": "Crate",
+			"name": "Crate1"
 		}
 	]
 }
